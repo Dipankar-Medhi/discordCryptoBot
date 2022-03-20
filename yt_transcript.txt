@@ -1,0 +1,2012 @@
+so guys in this video we're building a
+00:01
+discord bot and it's going to be very
+00:03
+simple bot uh we'll write the command
+00:04
+ping and it's just going to respond pong
+00:06
+to us
+00:07
+uh and it's going to be a small video
+00:09
+but also divided into two
+00:10
+separate small parts so this is part one
+00:12
+of the video and in this video we'll try
+00:14
+to
+00:14
+do all the process that's required on
+00:16
+discord to get our token ids generated
+00:17
+in this
+00:18
+in the second video we'll actually write
+00:19
+our golan code so
+00:21
+uh here are the steps as you can see on
+00:22
+my screen that we're going to follow so
+00:24
+you need a discord account for uh you
+00:26
+know obviously and then secondly
+00:28
+you need to be as an admin of a server
+00:30
+so this is
+00:31
+uh this can be uh you know if you don't
+00:33
+do this step it can be very confusing
+00:35
+for you because
+00:36
+uh a lot of people try to create a bot
+00:39
+uh
+00:39
+for servers that they're not an admin
+00:41
+off and that will be tricky because you
+00:42
+won't be able to
+00:43
+give it any permissions so you need to
+00:45
+create a server and you need to be admin
+00:47
+of that server so
+00:48
+and then we'll have to create an app so
+00:50
+let's get started from this point
+00:51
+onwards right so i already have
+00:54
+uh my discord account and i am an admin
+00:56
+of this
+00:57
+fake community called tribe community
+00:59
+and then what we'll do is we'll say
+01:02
+discord api let's
+01:05
+let's search for that and it says
+01:08
+uh you know blah blah blah blah blah and
+01:10
+here it says make an app okay go make an
+01:12
+app
+01:13
+so i'll create a new application i'll
+01:14
+say
+01:16
+ping bot it just pings back right so
+01:19
+i'll say create
+01:22
+and here it's given me my application id
+01:25
+and it's given
+01:26
+my public key right so let's go back to
+01:27
+our diagram and see we have created the
+01:29
+bot
+01:30
+now we have to assign it permission
+01:31
+sorry we've created an app now we have
+01:32
+to create a bot
+01:33
+in this so you can see this third option
+01:36
+is bot
+01:37
+so what you'll do now is you will add
+01:40
+bot
+01:40
+you'll say yes
+01:44
+and then it's good it's given you a
+01:46
+token right so you can click to reveal
+01:47
+it
+01:48
+and you can copy this token and keep it
+01:50
+right and
+01:51
+so make sure you copy this token and now
+01:53
+let's go back to our diagram so we've
+01:54
+created a bot now let's assign it
+01:56
+permissions
+01:57
+so the permissions that are assigned it
+01:58
+will be send messages and
+02:00
+actually i'm going to click on all of
+02:01
+these it doesn't matter
+02:03
+it's going to read and send messages
+02:04
+basically and also view channels
+02:07
+so that is it and now what we'll do is
+02:11
+we'll again go back uh we'll see that we
+02:14
+have to copy what token we've already
+02:15
+done that
+02:16
+right and now we have to authorize the
+02:18
+app to the server using a link so this
+02:20
+link is something that i always keep
+02:22
+uh misplacing so i i have kept it with
+02:24
+myself emailed to myself
+02:26
+and what i'll do now is i'll also put
+02:28
+this in the description box below so
+02:29
+that you can find it easily
+02:31
+this uh link can be slightly challenging
+02:33
+to find i mean i wasn't
+02:34
+i was not able to find it at least on
+02:36
+their website so here the client id that
+02:38
+we need to put
+02:39
+is the uh application id that you'll
+02:42
+find in your general information
+02:44
+uh in your application dashboard
+02:47
+so we'll just copy this application id
+02:50
+and we'll place it here
+02:53
+and now we'll press enter and here it's
+02:55
+going to ask you
+02:57
+uh you know uh about the ping bot do you
+02:59
+want to add it to your
+03:00
+server and which server do you want to
+03:02
+add to so i'll say type community i'll
+03:04
+say authorize
+03:05
+i'll say i'm a human and authorized
+03:08
+right so now if i go back
+03:10
+to my uh
+03:15
+community type community i'll see the
+03:17
+ping bot here right and i'll be able to
+03:19
+send it messages
+03:20
+so now we have our bot token we have
+03:22
+authorized our bot
+03:24
+our bot is there in our server
+03:27
+so everything looks good and our next
+03:29
+video what we'll do is we'll just write
+03:30
+the code uh
+03:32
+to create the bot and go lank and
+03:35
+um so do subscribe to the channel so
+03:37
+that you come to know when the video
+03:39
+comes out the next video comes out of
+03:40
+this series
+03:41
+and thanks a lot for watching
+
+part2
+
+all right guys welcome back to the
+00:01
+second part of the building at a squad
+00:03
+bot with golang series
+00:04
+and in this video we'll actually start
+00:06
+writing the code that's required to
+00:07
+build the golang bot
+00:09
+so uh to build the bot we'll be using
+00:10
+this library called discord go so
+00:12
+somebody has actually
+00:14
+gone through the trouble of going
+00:15
+through the api documentation of
+00:17
+discord and actually creating a disc
+00:19
+golang wrapper around it so that all we
+00:21
+have to do is
+00:22
+import this library and call functions
+00:23
+that this person has already written
+00:25
+and those functions in turn talk to the
+00:26
+apis
+00:28
+that discord has provided so let me just
+00:31
+take you through this library once so
+00:32
+that you understand
+00:33
+uh you know how a library is built and
+00:35
+uh probably in one of the feature videos
+00:36
+we'll
+00:37
+build a library for some api like
+00:38
+probably a table or notion something
+00:40
+like that we'll actually build a library
+00:41
+from scratch
+00:42
+so that uh you know you'll get a better
+00:43
+idea of how to write these kind of type
+00:45
+of libraries
+00:46
+uh because in your career let's say if
+00:48
+you join a company and if you become a
+00:50
+go land developer
+00:51
+uh this could be a task that may be
+00:52
+given to you where uh you know
+00:54
+the company built a product and then now
+00:55
+they want to write a library
+00:57
+a go-lang library for that product so
+00:59
+that's a very very common kind of a task
+01:01
+that you get when you
+01:02
+uh join the company as a golang
+01:04
+developer
+01:05
+anyhow so as you can see there are some
+01:08
+files right and some files are more
+01:09
+important than the other files so
+01:11
+one file is this oauth.go so this
+01:13
+obviously uh
+01:14
+you know is about how the bot how your
+01:16
+bot is going to sign into
+01:18
+uh discord right and then you have your
+01:21
+discord.go
+01:23
+and this has a lot of uh
+01:27
+uh you know important structs and
+01:28
+functions around creating a new session
+01:31
+uh and using the token inside uh discord
+01:35
+and then you have your events right all
+01:37
+the types of events
+01:39
+that can possibly happen inside uh
+01:41
+discord
+01:42
+and then you have your event handlers
+01:43
+for so for all those events there are
+01:45
+all these event handlers that you have
+01:47
+right so channel pins update even
+01:49
+handler so all the events that take
+01:51
+place
+01:51
+uh there will be functions that can
+01:52
+handle those uh you know events
+01:54
+right and then you have your different
+01:56
+interactions
+01:58
+where uh you know you can define how
+02:00
+whatever interaction is
+02:02
+is it a message or a voice uh message
+02:05
+and how does it work basically so all of
+02:07
+those things are here right so somebody
+02:08
+has already written all these functions
+02:09
+for you
+02:10
+uh there's also logging there as you can
+02:12
+see
+02:13
+right so all of uh there are also tests
+02:16
+written for each of these
+02:18
+uh and then user file is also important
+02:20
+because we'll be creating our bot as a
+02:22
+user
+02:22
+and so we'll have to give it an id so
+02:24
+we'll be using some functions from this
+02:25
+user file as well
+02:27
+and uh maybe in the future i'll show you
+02:29
+how to use the voice
+02:31
+voice messages also so uh so it's not
+02:33
+important for you to go through this
+02:34
+library but it's just
+02:36
+uh you know a good exercise whenever you
+02:38
+you're using a library just go through
+02:39
+it
+02:40
+uh see what kind of functions that the
+02:41
+person has written and
+02:43
+what all can you use right in your own
+02:45
+project
+02:46
+uh so now uh you know the functions that
+02:49
+we'll be using uh are the
+02:50
+are very basic in the sense um you know
+02:53
+we're just going to
+02:54
+use a function called new which just
+02:55
+creates a new bot we just created a
+02:57
+you're going to use a function called
+02:58
+user which just uh you know creates a
+03:00
+user for us and then assigns it a user
+03:02
+id
+03:04
+and then a channel message sent which
+03:06
+just sends a message that's all
+03:07
+we're not doing anything special here
+03:09
+we're just creating a bot that replies
+03:11
+pong if you send ping to it right that
+03:12
+is all it does
+03:14
+uh obviously we'll have more complicated
+03:16
+lessons coming up in the future
+03:18
+where you know we'll build like a
+03:19
+weather tracker we'll build like a
+03:21
+you know data scraper all of that right
+03:23
+inside discord but
+03:25
+the thing is you need to start somewhere
+03:26
+right so we're going to start at a very
+03:28
+very basic place now uh now i'll take
+03:31
+you back to my
+03:32
+uh powershell yeah so now we're in our
+03:35
+powershell and
+03:35
+we're going to go inside the folder
+03:37
+where i keep most of my
+03:39
+uh go code and here we're going to
+03:43
+create a directory called
+03:45
+discord ping so we'll
+03:51
+see it inside this discord ping
+03:54
+and we're going to open up our project
+03:56
+in vs code you could be using any other
+03:58
+code editor doesn't matter
+03:59
+and also these powershell commands these
+04:01
+are the same if you're using
+04:03
+um it doesn't matter if you're using uh
+04:06
+you know mac or ubuntu the commands are
+04:09
+going to be the same
+04:10
+now let me try switching to my uh yeah
+04:14
+vs code i think you can see my vs code
+04:16
+now
+04:16
+so as you can see we have a completely
+04:18
+empty um
+04:20
+you know blank canvas and we'll uh
+04:23
+create a file called main.go
+04:27
+and we'll have more folders here don't
+04:29
+worry
+04:30
+and then we'll also have config.json
+04:33
+where we'll create
+04:34
+a key power uh tokens
+04:37
+so in config.json
+04:40
+all you need to do is you need to just
+04:43
+keep your token
+04:46
+and also this squad wants something
+04:48
+called as bot prefix from us
+04:52
+and it's usually this exclamation mark
+04:55
+okay so for the token now let me try and
+04:58
+find my token
+04:59
+and so you can
+05:02
+go to your app discord
+05:06
+uh i'm not sure if you can see my uh
+05:10
+browser let me try and yeah so you can
+05:13
+see my browser now
+05:14
+so we'll we'll go ahead and go to our
+05:16
+discord
+05:19
+bot app
+05:23
+so somewhere
+05:26
+yeah so we can see our uh ping bot here
+05:30
+so in the previous video you already
+05:31
+copied the um
+05:34
+bot token i think but i'm just showing
+05:36
+it to you again in case
+05:38
+you're joining in right now for this
+05:39
+video so this is the what token you have
+05:41
+to copy
+05:42
+and you have to paste it so let me
+05:44
+switch over back to my
+05:46
+vs code so you can see yeah so i've copy
+05:49
+and pasted my
+05:51
+token and everything looks everything
+05:54
+looks good
+05:55
+so what we'll do now is we'll start
+05:57
+working on our
+05:58
+main.co file so let's save this file
+06:02
+and back here in our main.go file
+06:05
+we will say package main
+06:11
+and we'll say import
+06:15
+and i know we need fmt and i
+06:18
+know that we'll need two more files but
+06:21
+uh let's create those files first so
+06:23
+we'll say
+06:23
+funk main
+06:27
+and we want to first
+06:30
+read our config file right so we need
+06:33
+this function
+06:34
+that reads our config file and what i'll
+06:36
+do is i'll create it it's inside
+06:38
+uh another file config file so i'll just
+06:40
+for now i'll just say config.readconfig
+06:42
+all right it'll be inside another file
+06:43
+called
+06:44
+config.go so don't worry about that
+06:45
+right now but
+06:47
+the the important part is that this is
+06:49
+the function that we
+06:51
+need to write there all right and then
+06:54
+we
+06:54
+check for error you know how to check
+06:56
+for error you say error
+06:58
+is not equal to nil and if error is not
+07:01
+equal to nil then you print out the
+07:02
+error
+07:04
+println and error dot
+07:07
+error all right and then you return from
+07:10
+here
+07:12
+then you need something to start the bot
+07:15
+all right we need to write this function
+07:17
+that starts at what
+07:18
+this also i think i'll write in another
+07:19
+file not in the main dot go file
+07:22
+and then we'll just create an
+07:25
+empty channel
+07:29
+notification channel that will of size
+07:31
+zero
+07:32
+and then we'll just return from here all
+07:34
+right so this is it this is
+07:36
+all uh that we have to do in our uh
+07:39
+main.co file
+07:40
+that's that's all all right okay so now
+07:42
+let's create our two folders that i've
+07:44
+been talking about the two other files
+07:46
+and one will be a folder called bot
+07:50
+and the other will be a folder called
+07:51
+config
+07:55
+inside config we need to create a file
+07:57
+called config.go
+08:00
+inside bot we need to create a file
+08:02
+called bot.go
+08:03
+so all uh that config is doing is just
+08:07
+uh revolving around reading this
+08:09
+config.json file that's all the
+08:10
+config.go file will do
+08:12
+and bot.gofile is the main file which is
+08:15
+responsible for
+08:16
+actually sending the messages uh as a
+08:18
+bot
+08:19
+on uh discord right and all our main.go
+08:23
+file is doing is just
+08:24
+you know calling those functions that's
+08:26
+all it's doing right
+08:29
+so now what we'll do is we'll let me
+08:31
+first check if my
+08:32
+config.json has the right token
+08:35
+yeah it has right token anyhow so let's
+08:38
+come back to our config.go file
+08:41
+so in our config.go file we'll start
+08:44
+writing
+08:45
+package config import
+08:50
+so i know that i need encoding slash
+08:53
+json
+08:54
+i need fmt and i need io slash
+08:59
+io util
+09:03
+and let's define some variables token
+09:07
+string and bot prefix
+09:14
+as string
+09:17
+because i want to get these two uh
+09:20
+variables from my config.json file
+09:22
+into config right so that i'll need
+09:24
+these two variables
+09:25
+so that i can use them later on and then
+09:28
+i'll have
+09:30
+config
+09:34
+which will be config struct
+09:39
+all right so let's define what is
+09:40
+context struct
+09:43
+type conflict struct
+09:46
+it is obviously of type struct right and
+09:48
+it has two things one is a token
+09:50
+and not json.okan just token
+09:55
+and the other thing is bot
+09:58
+prefix and you already know how this
+10:01
+works
+10:02
+it's going to say string and json
+10:06
+token
+10:11
+right and
+10:14
+something wrong with my mouse and then
+10:17
+you have
+10:18
+bot prefix which all which is also a
+10:20
+string
+10:22
+and json token
+10:27
+sorry bot prefix
+10:33
+okay so we'll read the
+10:36
+config file and we'll get that into a
+10:39
+struct and then we'll define our
+10:40
+variables with that that's the whole
+10:42
+plan here that's why we're doing all of
+10:43
+this
+10:45
+and now we'll have to create our main
+10:47
+function the func read config
+10:52
+okay which we're calling in main.go
+10:56
+we're calling the readconfig function
+10:57
+right and that's what we are trying to
+10:59
+basically build out here
+11:01
+and all that this function does is just
+11:04
+read the
+11:05
+config file so we'll say fmt dot
+11:08
+println uh i mean the the code is quite
+11:11
+simple so i'm i'm hoping you don't have
+11:13
+any
+11:14
+uh you know doubts but if you have any
+11:16
+doubts or any issues anything that
+11:18
+you're not understanding then you can
+11:19
+feel free to put it out in the comments
+11:21
+below
+11:23
+so uh so the first thing it says it's
+11:26
+it's going to
+11:26
+start reading the config file right and
+11:29
+then
+11:30
+we're going to use the i o util package
+11:32
+that we have used out here
+11:34
+and we're going to use the read file uh
+11:37
+function and we're going to use our
+11:39
+config
+11:40
+dot json file makes sense
+11:44
+and we're going to take the value that
+11:46
+comes from here into file and also it
+11:48
+returns something called as an error
+11:49
+so it returns two things if if it
+11:52
+returns an error that means if error
+11:55
+not equal to nil you just print out the
+11:58
+error
+11:58
+fmt dot println
+12:02
+error dot error
+12:06
+and you return the error from this
+12:07
+function
+12:09
+okay and here
+12:14
+we're going to
+12:19
+print out the file
+12:24
+now what we'll do is we'll unmarshall uh
+12:27
+config so we'll say json dot on marshall
+12:33
+file comma config
+12:36
+right and then we'll say error is equal
+12:39
+to
+12:42
+yes and here
+12:45
+if there is an error
+12:48
+we'll just print out the error so it's
+12:50
+fmp dot println
+12:52
+error dot error and return the error
+12:59
+okay so we have taken our config.json
+13:03
+from json we have unmarshaled it and
+13:05
+created a regular
+13:06
+uh you know golang readable string
+13:09
+format
+13:09
+type of a thing right and now we'll be
+13:11
+able to basically
+13:13
+um you know so and we have that this in
+13:16
+uh something called as config
+13:17
+now all we need to do is we need to
+13:19
+assign token and bot prefix
+13:22
+uh the values from this config right
+13:25
+because it this has the
+13:27
+golang readable values
+13:30
+now what we'll do is we'll say token
+13:34
+our token variable which will now become
+13:36
+equal to config.token
+13:39
+right and bot prefix
+13:42
+will become equal to config dot bot
+13:46
+prefix return nil because
+13:49
+there's no errors if you've come this
+13:51
+far
+13:54
+right so does this make sense let me
+13:58
+take you through the entire code again
+13:59
+actually
+14:00
+just to make sure so uh you imported
+14:03
+these three things right
+14:04
+uh encoding json because i want to use
+14:06
+the unmarked link package from json
+14:09
+now unmarshaling function from the json
+14:11
+package i want to use the print
+14:13
+uh functions from fmt the format package
+14:16
+so i'm going to use those
+14:17
+and from ivitl i need the function that
+14:19
+helps me to read the file so what i'm
+14:21
+i'm doing basically is i have these two
+14:24
+variables
+14:26
+and then a config variable of type type
+14:28
+config struct
+14:30
+config struct starts uh if you don't
+14:32
+know our
+14:33
+uh you know your own data types in
+14:35
+golang so you can create your own data
+14:37
+type in golang right
+14:38
+and this struct is of type token which
+14:41
+is of string
+14:42
+right and what prefix which is of type
+14:44
+string
+14:45
+and uh so we have config of type config
+14:49
+start right so
+14:50
+i i'm sure till now that much is clear
+14:53
+and now what we'll do is we'll
+14:54
+uh you know read the file config.json
+14:57
+which already is there we've created
+14:58
+that it has token android prefix
+15:00
+right and it's going to store that in
+15:02
+file or it's going to return an error if
+15:04
+there's an error you print out the error
+15:06
+if you receive the file then you print
+15:07
+out the file as as simple as that
+15:10
+right and then you uh try and unmarshal
+15:13
+uh this file and bring the values into
+15:16
+config
+15:17
+okay config which is a variable of type
+15:20
+conflict struct
+15:22
+okay and now that you have the values
+15:25
+here you
+15:26
+will say config.token is equal to token
+15:28
+your token variable
+15:30
+uh this one token which is just a string
+15:32
+it becomes equal to config token and
+15:34
+what prefix becomes equal to config.fix
+15:37
+so now token and what prefix are not uh
+15:40
+json they're
+15:41
+uh actually go and readable values that
+15:44
+go line can process
+15:45
+and also and also we'll be sending these
+15:48
+uh
+15:48
+when creating the disc the bot in for
+15:51
+discord
+15:52
+right so i hope uh till now everything
+15:54
+is clear
+15:55
+and so we've written our main dot go
+15:57
+file we've written our config.go file
+15:59
+and all that we need to do now is write
+16:00
+our go file
+16:02
+and it's actually a very very simple
+16:04
+file
+16:05
+uh but i think i'm going slightly over
+16:08
+time so what i'll do is i'll just create
+16:09
+another video
+16:10
+uh the last the third part of this uh
+16:13
+series
+16:13
+i know i had said that there will be
+16:15
+only two parts but i think i'll have to
+16:16
+create a third part
+16:17
+because i'll have to show you how to
+16:18
+write the word.go file and then i'll
+16:20
+also have to show you how to test it
+16:22
+inside the discord interface so
+16:25
+uh thank you for watching and uh please
+16:29
+subscribe so that you come to know when
+16:30
+the next video is
+16:32
+up on youtube and thank you for watching
+
+part3
+guys welcome back to the third part of
+00:02
+the building a discord bot with golang
+00:04
+series
+00:04
+in this video we have to start writing
+00:06
+our bot dot go file so let's get started
+00:10
+so i'll say package bot and
+00:13
+i'll be importing a couple of things one
+00:15
+of them will be the format package
+00:18
+and we'll
+00:21
+have to import the config file so which
+00:24
+reminds me i have not
+00:26
+initialized uh
+00:30
+this project right we have not done
+00:31
+google mode in it
+00:33
+so what i'll do is i'll take you back to
+00:35
+the powershell
+00:39
+right and now what we'll do here is
+00:41
+we'll say go mod
+00:42
+init and we'll say
+00:47
+github.com
+00:49
+discord ping
+00:52
+all right and uh we can say go mod id
+00:56
+obviously
+00:58
+and there's one package that i need like
+01:00
+i showed you in the previous video that
+01:01
+we need that
+01:02
+discord go package right so we're going
+01:03
+to say go
+01:05
+get github.com
+01:10
+uw marin slash
+01:13
+discord go
+01:19
+so let's add that so i'm not sure if
+01:21
+this is the one bw marina there's double
+01:24
+r
+01:24
+here just make sure in the squad go so
+01:26
+we have that package now i think we can
+01:28
+now switch back
+01:29
+to our um code editor
+01:32
+[Music]
+01:34
+not sure if you can see the code editor
+01:37
+let me try switching it back on again
+01:41
+yeah now you can see it uh so
+01:45
+here i want to import my
+01:49
+config file so what i'll do is i'll say
+01:51
+discord
+01:52
+uh the name of the project i gave it was
+01:54
+discord ping right so i'll say discord
+01:56
+ping
+01:59
+slash config
+02:04
+and i'll say github.com
+02:08
+vw marin slash discord
+02:11
+go okay
+02:16
+so far so good and now we start writing
+02:18
+the actual code so we need a variable
+02:21
+called
+02:22
+bot id which will be string and we have
+02:26
+a variable called gobot sorry in the
+02:28
+next line we will call
+02:30
+gowat which will be
+02:34
+of type session
+02:38
+discord go dot session
+02:44
+okay
+02:48
+and basically in our gobot we want to
+02:52
+uh when we create a new bot right a new
+02:54
+session we want to store it in our gobot
+02:56
+right that's what that's why we have to
+02:57
+create this variable called cobot
+02:59
+and for the bot id we'll basically we
+03:01
+have to if if we want our bot to
+03:03
+actually exist as a user in our channel
+03:05
+and want to reply to us we obviously
+03:06
+have to provide it an id
+03:08
+right so let's say funk
+03:13
+start now in case you're wondering what
+03:14
+funk start is let me first
+03:17
+correct these spellings yeah so if
+03:19
+you're wondering what funk started is
+03:20
+basically the same function that we had
+03:21
+in our main.go file right so we had
+03:23
+function this start right bot.start so
+03:26
+that means that we can
+03:28
+uh import our config and bought folders
+03:31
+here
+03:31
+so uh let's do that so that these two
+03:34
+squiggly lines will go away
+03:36
+because now we have actually started
+03:37
+writing those files so we'll say
+03:38
+github.com
+03:41
+discord ping slash bot
+03:45
+right for the bot folder and the what
+03:47
+file
+03:48
+and we'll say github.comkill slash
+03:53
+discord ping slash config
+03:57
+for the config folder in the config file
+03:59
+right so now if we save this
+04:03
+uh i'm trying to save it so if we save
+04:05
+this then this quickly lines will go
+04:07
+away like you see right now
+04:08
+right so main.go file is sorted you
+04:10
+don't have to do anything here
+04:12
+in the config file uh i don't think you
+04:15
+need
+04:15
+any other packages so this is also
+04:17
+sorted in the bot
+04:18
+file uh you have these packages and
+04:21
+that's all we needed
+04:22
+and now we'll get back to working on our
+04:25
+start function
+04:27
+so we'll say so we'll say discord
+04:30
+go dot new to create the new session
+04:34
+and here we'll pass our config
+04:38
+dot token right so in our main file
+04:43
+we are able to get uh the con sorry in
+04:46
+our config file
+04:47
+we are able to get uh the tokens right
+04:50
+towards the end
+04:51
+that's the uh token that we have to use
+04:53
+here
+04:54
+right so config.token and this will help
+04:57
+us start a session so as you remember
+04:59
+uh where are we storing the session
+05:00
+we're storing it in gobot variable so
+05:02
+we'll say
+05:03
+go bot and the other thing it returns is
+05:06
+an error
+05:06
+right so we'll say gobot and error is
+05:08
+equal to discord discard go
+05:10
+dot new and we'll pass the token here
+05:12
+and this will help us create the bot
+05:14
+session right and if there is an error
+05:19
+which means if error not equal to nil
+05:20
+then we'll just print out
+05:22
+the error get error dot error
+05:27
+and we'll return from here
+05:31
+okay
+05:34
+and now so there's this quick line here
+05:36
+because we have defined gobot and we
+05:38
+have not used it but
+05:39
+soon we'll use it and now we have to
+05:42
+create the bot as a user so we'll say
+05:44
+user is equal to end user and error
+05:50
+go bot dot user
+05:57
+okay and if
+06:01
+there is an error for this so for each
+06:03
+statement we are handling errors which
+06:05
+is a good practice
+06:07
+right that just makes sure that you
+06:09
+won't have any errors
+06:11
+so we'll say println error.error
+06:16
+all good here and now
+06:20
+since we have our user right and we have
+06:23
+uh
+06:23
+we want to store our we want to get the
+06:25
+id of this user and store it in our bot
+06:27
+id
+06:28
+so we'll say bot id equal to
+06:32
+u dot id all right
+06:35
+and the other uh function from the gobot
+06:39
+library from this discord go library
+06:41
+that we want to use
+06:42
+is the add handler function
+06:46
+and here we'll call a function called
+06:48
+message handler that
+06:50
+and this function is something that
+06:51
+we're going to write right now so don't
+06:52
+get confused
+06:54
+uh we have not written this function yet
+06:55
+so we'll be writing this function will
+06:56
+be a complete
+06:57
+function that will help us to read
+06:59
+commands and also to send messages back
+07:01
+okay so all so what we're doing is we're
+07:04
+using
+07:04
+uh this function called new right from
+07:07
+that discord go package
+07:09
+we are using user we're using add
+07:11
+handler right so new creator session
+07:13
+user gets a user and gets us the user id
+07:15
+and add hundred
+07:16
+creates a handler that helps us to read
+07:19
+and write messages to the channel
+07:21
+okay so i hope everything is clear till
+07:24
+now
+07:25
+so after you have handled added the
+07:27
+handler you have to say
+07:29
+error is equal to go
+07:33
+bot dot open
+07:38
+right starts the session and
+07:43
+so we've created a session but open is
+07:44
+the function that actually starts the
+07:46
+session
+07:47
+okay and we'll say fmt dot print
+07:51
+ln error dot error
+07:56
+return
+07:59
+fmp dot print allen
+08:08
+as it says print it's actually print
+08:12
+println okay
+08:15
+and we'd like to output what is running
+08:22
+so so far so good so we have our
+08:26
+start function in place so we have a
+08:27
+squiggly line here it says message
+08:29
+handler is not defined and but that's
+08:31
+not a problem because we are actually
+08:32
+going to write our message handler
+08:33
+function right now
+08:35
+and uh so till now we have used this add
+08:38
+handler open
+08:40
+user and new all these functions and
+08:42
+like i showed you in the first video you
+08:44
+can
+08:44
+or in the second video actually you can
+08:46
+always go to the discord go
+08:48
+package in on github and actually check
+08:51
+out these functions and what they do
+08:52
+right so nothing very confusing what
+08:54
+i've done for you is basically i've
+08:56
+removed or i've reduced the time for you
+08:58
+to actually go and read about these
+08:59
+functions and actually how to use them
+09:02
+uh
+09:03
+so what we'll do now is we'll say funk
+09:06
+message handler and
+09:09
+s discord go
+09:13
+dot session
+09:17
+okay and m
+09:20
+which is
+09:23
+discord go dot message create
+09:27
+so i don't see that function here in the
+09:29
+auto fill so i'll have to write it
+09:31
+manually
+09:32
+discord code dot
+09:36
+message create
+09:39
+all right so we're creating this message
+09:41
+handler function here so that's why all
+09:43
+the errors have gone away
+09:45
+uh and here now
+09:48
+there's one thing we need to do right so
+09:50
+in all uh
+09:51
+bots like let's say slack what or
+09:53
+discord bot when
+09:54
+uh when you define a lot of commands
+09:56
+right sometimes
+09:58
+uh there could be commands the the
+10:00
+answers could actually be confused as
+10:01
+commands by the bot
+10:02
+right so what we need to do is we need
+10:04
+to make sure if
+10:05
+uh the author dot id author of the
+10:09
+message
+10:09
+is not equal to uh the bot id that means
+10:13
+that bot does not start confusing
+10:15
+the messages that it is sending itself
+10:18
+right as the messages that are coming as
+10:19
+commands
+10:20
+so otherwise it will go into a like a
+10:22
+forever loop so this is a very common
+10:24
+practice i mean don't get confused here
+10:25
+this is a very very common core you'll
+10:26
+see in almost all slack and
+10:29
+discard bots right so if uh
+10:32
+the uh the author id of the message
+10:34
+that's coming here
+10:35
+is equal to the bot id then return don't
+10:37
+do anything because
+10:38
+that's a message that you only sent as
+10:40
+the bot right so don't do anything
+10:44
+otherwise if the content
+10:49
+yeah in all other cases where you know
+10:51
+this is not equal then and if the
+10:52
+content is pink which is going to be
+10:54
+our command that we'll send it right now
+10:57
+then all you have to do is
+10:58
+s channel
+11:01
+and message send
+11:08
+and here we'll have the channel id on
+11:11
+which
+11:11
+you have to reply and the response that
+11:14
+you want to send so in my case i want to
+11:16
+send the response bond you can send
+11:17
+anything that you want
+11:19
+you can define the command also anything
+11:21
+that you like
+11:22
+so uh but we also have to capture these
+11:26
+values now
+11:26
+since we don't want to capture it in
+11:28
+actual variables and do anything with
+11:29
+those values we'll just
+11:30
+put these blank descriptors here and
+11:35
+everything else looks good but uh you
+11:38
+know i know that there will be errors
+11:39
+for sure so let me just go through the
+11:41
+complete code again you can do that as
+11:43
+well in your own code
+11:44
+if you are coding along with me just go
+11:46
+through the entire code and see if there
+11:48
+uh there could be any
+11:49
+places of error any typos any silly
+11:52
+mistakes
+11:53
+uh but even even if i check all of that
+11:55
+i know there will be errors i
+11:57
+i must have missed something so you can
+11:59
+just take
+12:00
+two minutes and go through the entire
+12:02
+code um
+12:05
+so the error has been filled out
+12:06
+properly i have taken the id message
+12:08
+handlers proper gobot open
+12:11
+and bot is running and this also seems
+12:14
+to be
+12:14
+all right so our bot file looks okay
+12:17
+config file i am not so sure
+12:21
+config file tick
+12:24
+conflict struct and read config
+12:27
+and you have your print and
+12:30
+unmarshalling
+12:31
+and your tokens and return help and main
+12:34
+dot co
+12:35
+file actually doesn't have much right it
+12:37
+just has
+12:39
+uh these two functions calls to these
+12:40
+two functions that is it
+12:42
+so what you can do is we actually try
+12:44
+running this program you know
+12:46
+i know there will be errors we'll solve
+12:48
+it together not a problem
+12:50
+so let's go back head over back to our
+12:53
+uh powershell so we're back in our
+12:57
+powershell
+12:58
+and let's try building it let's see what
+13:01
+it says so there's no issues right now
+13:02
+so we'll say go run
+13:04
+main.go
+13:08
+will it run i'm not sure
+13:11
+yeah so it's saying there's some kind of
+13:13
+an error right so it says
+13:15
+on marshall nil star conflict struct
+13:18
+right so we have to go back to our code
+13:20
+and actually
+13:20
+try so back in our vs code now we'll
+13:23
+have to start and try and look for the
+13:24
+error
+13:28
+yeah so i think i've i have one
+13:31
+particular
+13:32
+at least one issue i've found is that we
+13:34
+have to
+13:35
+pass a reference here to config and not
+13:36
+config itself
+13:39
+so this is a mistake that i made always
+13:40
+an unmarshall function
+13:42
+you have to pass the reference right
+13:45
+so i found one mistake and now let's
+13:47
+also go to our bot.go
+13:49
+because i'm expecting more issues to be
+13:51
+there
+13:53
+um
+13:56
+yeah so in the discord go dot new
+14:00
+function
+14:01
+in this library called discord go you
+14:02
+have to have a space here after what
+14:04
+just one space right i don't know why
+14:06
+they've kept this but there's
+14:08
+there's like one little space here and
+14:12
+only then it'll work so i just referred
+14:14
+the document again and then
+14:16
+uh you know just make sure you put one
+14:19
+space here right
+14:21
+uh i know it's a very weird thing i mean
+14:23
+i also didn't understand why there's a
+14:24
+space there but
+14:25
+uh that's what you have to do so make
+14:27
+sure you put a space here and make sure
+14:28
+you put a
+14:30
+ampersand here and then everything
+14:32
+should work
+14:33
+hopefully so now let's head back to our
+14:37
+powershell let's see what happens so
+14:40
+we'll say go build
+14:42
+and we'll say go run main dot go
+14:47
+and here we can see our config file
+14:49
+reading config file in the config file
+14:50
+itself
+14:51
+so let me do one thing i'll actually
+14:53
+take you to the
+14:58
+uh code window and
+15:02
+show you this file right see so we read
+15:04
+uh our config file and we
+15:06
+uh assigned that to a variable called
+15:08
+file and then we actually printed out
+15:10
+the file
+15:10
+as a string in our terminal so that's
+15:12
+why we can see the entire config file in
+15:14
+our terminal right
+15:15
+so i hope you now understand what this
+15:17
+is
+15:18
+and now what we'll do is we'll head over
+15:20
+to our browser
+15:22
+um yeah so now you can see my browser
+15:26
+and let's go to our ping bot
+15:29
+and let's uh so if you go back to our
+15:32
+to your channel right the channel uh
+15:35
+being this one
+15:36
+so if you uh try and find pingbot
+15:39
+which is this and you say ping
+15:43
+it'll say pong back right so this quad
+15:46
+bot works uh fine now everything works
+15:50
+perfectly
+15:51
+right and so i hope uh you've learned
+15:54
+something in this video
+15:55
+and this was the final video we've made
+15:57
+the discord bot
+15:59
+and now uh in the upcoming videos we'll
+16:02
+we'll start creating more complicated
+16:03
+discord bots right the
+16:05
+bots that can forecast whether they can
+16:07
+tell us what whether it is in which city
+16:09
+and currency converters and uh you know
+16:13
+uh even even bots that can work with
+16:15
+jira and
+16:16
+trello so let's uh let's start that you
+16:18
+know in the next coming week
+16:20
+uh so if you're new to this channel do
+16:22
+subscribe because we i keep coming up
+16:24
+with this kind of stuff
+16:25
+interesting stuff that you build on our
+16:27
+channel
+16:28
+and uh thank you for watching thanks a
+16:30
+lot
